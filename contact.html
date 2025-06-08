@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Voyage Vista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+        
+        /* Include navbar styles from navbar.html */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FF7722;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #FF7722;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Contact page specific styles */
+        .contact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: -50px auto 0;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            position: relative;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #FF7722;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 119, 34, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background-color: #FF7722;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e66200;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.8rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .info-icon {
+            min-width: 40px;
+            height: 40px;
+            background-color: #FF7722;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+        }
+        
+        .info-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-content p, .info-content a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .info-content a:hover {
+            color: #FF7722;
+        }
+        
+        .map-container {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            background-color: #FF7722;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 119, 34, 0.3);
+        }
+        
+        .error-message {
+            color: #ff3333;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: absolute;
+                right: 0;
+                height: 92vh;
+                top: 8vh;
+                background-color: #333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 50%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                z-index: 1;
+            }
+            
+            .nav-links li {
+                opacity: 0;
+                margin: 2rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .nav-active {
+                transform: translateX(0%);
+            }
+            
+            @keyframes navLinkFade {
+                from {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+            
+            .toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .toggle .line2 {
+                opacity: 0;
+            }
+            
+            .toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Voyage Vista</div>
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <div class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>Have questions about our travel packages or need custom travel arrangements? We're here to help you plan your perfect journey across India.</p>
+    </div>
+
+    <!-- Contact Container -->
+    <div class="contact-container">
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2 class="form-title">Send us a Message</h2>
+            <div class="success-message" id="successMessage">
+                Thank you! Your message has been sent successfully. We'll get back to you shortly.
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" class="form-control" required>
+                        <div class="error-message" id="firstNameError">Please enter your first name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" class="form-control" required>
+                        <div class="error-message" id="lastNameError">Please enter your last name</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control">
+                    <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" class="form-control" required>
+                        <option value="">Select a subject</option>
+                        <option value="inquiry">General Inquiry</option>
+                        <option value="booking">Booking Information</option>
+                        <option value="customTour">Custom Tour Package</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="complaint">Complaint</option>
+                    </select>
+                    <div class="error-message" id="subjectError">Please select a subject</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" class="form-control" required></textarea>
+                    <div class="error-message" id="messageError">Please enter your message</div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2 class="info-title">Contact Information</h2>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Address</h3>
+                    <p>45 Marina Beach Road, Chennai, Tamil Nadu, India</p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Phone</h3>
+                    <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@voyagevista.com">info@voyagevista.com</a></p>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p>Saturday: 10:00 AM - 4:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sus!4v1625055883939!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+            
+            if (burger && nav) {
+                burger.addEventListener('click', () => {
+                    // Toggle Nav
+                    nav.classList.toggle('nav-active');
+                    
+                    // Animate Links
+                    navLinks.forEach((link, index) => {
+                        if (link.style.animation) {
+                            link.style.animation = '';
+                        } else {
+                            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                        }
+                    });
+                    
+                    // Burger Animation
+                    burger.classList.toggle('toggle');
+                });
+            }
+        }
+        
+        // Form validation
+        const validateForm = () => {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    
+                    // Validate first name
+                    const firstName = document.getElementById('firstName');
+                    const firstNameError = document.getElementById('firstNameError');
+                    if (!firstName.value.trim()) {
+                        firstNameError.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        firstNameError.style.display = 'none';
+                    }
+                    
+                    // Validate last name
+                    const lastName = document.getElementById('lastName');
+                    const lastNameError = document.getElementById('lastNameError');
+                    if (!lastName.value.trim()) {
+                        lastNameError.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        lastNameError.style.display = 'none';
+                    }
+                    
+                    // Validate email
+                    const email = document.getElementById('email');
+                    const emailError = document.getElementById('emailError');
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!email.value.trim() || !emailPattern.test(email.value)) {
+                        emailError.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        emailError.style.display = 'none';
+                    }
+                    
+                    // Validate phone (optional)
+                    const phone = document.getElementById('phone');
+                    const phoneError = document.getElementById('phoneError');
+                    if (phone.value.trim()) {
+                        const phonePattern = /^[0-9]{10}$/;
+                        if (!phonePattern.test(phone.value.replace(/\D/g, ''))) {
+                            phoneError.style.display = 'block';
+                            isValid = false;
+                        } else {
+                            phoneError.style.display = 'none';
+                        }
+                    } else {
+                        phoneError.style.display = 'none';
+                    }
+                    
+                    // Validate subject
+                    const subject = document.getElementById('subject');
+                    const subjectError = document.getElementById('subjectError');
+                    if (!subject.value) {
+                        subjectError.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        subjectError.style.display = 'none';
+                    }
+                    
+                    // Validate message
+                    const message = document.getElementById('message');
+                    const messageError = document.getElementById('messageError');
+                    if (!message.value.trim()) {
+                        messageError.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        messageError.style.display = 'none';
+                    }
+                    
+                    // If form is valid, show success message
+                    if (isValid) {
+                        document.getElementById('successMessage').style.display = 'block';
+                        contactForm.reset();
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            document.getElementById('successMessage').style.display = 'none';
+                        }, 5000);
+                    }
+                });
+            }
+        }
+        
+        // Initialize functions
+        document.addEventListener('DOMContentLoaded', function() {
+            navSlide();
+            validateForm();
+        });
+    </script>
+</body>
+</html>

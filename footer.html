@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+        }
+        
+        .footer-container {
+            max-width: 1200px; /* Ensure consistency with other container widths */
+            margin: 0 auto;
+            padding: 0 20px; /* Ensure consistency with other container paddings */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 50px;
+            background: #FF7722;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0; /* Reset default padding */
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #FF7722;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #FF7722;
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <footer id="contact">
+        <div class="container footer-container"> <!-- Added .container for consistency -->
+            <div class="footer-section">
+                <h3>Voyage Vista</h3>
+                <p>Making your Indian travel dreams come true with exceptional service and unforgettable experiences since 2010.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Indian Destinations</h3>
+                <ul>
+                    <li><a href="#">North India</a></li>
+                    <li><a href="#">South India</a></li>
+                    <li><a href="#">East India</a></li>
+                    <li><a href="#">West India</a></li>
+                    <li><a href="#">Central India</a></li>
+                    <li><a href="#">Northeast India</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="destination.html">Packages</a></li>
+                    <li><a href="destination.html">Destinations</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="homepage.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 45 Marina Beach Road, Chennai, Tamil Nadu, India</li>
+                    <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                    <li><i class="fas fa-envelope"></i> info@voyagevista.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Voyage Vista. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
